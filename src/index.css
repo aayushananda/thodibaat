@@ -3,6 +3,9 @@
 
 :root {
   --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
+  --primary-green: #16a34a;
+  --primary-green-dark: #15803d;
+  --primary-green-light: #dcfce7;
 }
 
 html,
@@ -165,26 +168,18 @@ section {
   }
 
   .navbar {
-    @apply fixed w-full left-1/2 py-5 px-5 md:px-20 -translate-x-1/2 z-[100] transition-all duration-300 ease-in-out;
+    @apply fixed w-full left-1/2 md:px-20 -translate-x-1/2 z-[100] transition-all duration-300 ease-in-out;
 
     &.scrolled {
-      @apply top-0 bg-white-50;
+      @apply top-0 bg-white;
     }
 
     &.not-scrolled {
-      @apply md:top-10 top-0 bg-transparent;
+      @apply md:top-1 top-0 bg-white;
     }
 
     .inner {
       @apply mx-auto flex items-center justify-between;
-    }
-
-    .logo {
-      @apply text-black-50 text-xl md:text-2xl font-semibold transition-transform duration-300 hover:scale-105;
-
-      &.scrolled {
-        @apply text-blue-900;
-      }
     }
 
     nav.desktop {
@@ -201,7 +196,7 @@ section {
           }
 
           .underline {
-            @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-black-50 transition-all duration-300 group-hover:w-full;
+            @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full;
           }
         }
       }
@@ -209,7 +204,7 @@ section {
 
     &.scrolled {
       nav.desktop ul li {
-        @apply text-blue-600;
+        @apply text-black;
       }
     }
 
@@ -223,85 +218,11 @@ section {
       @apply flex;
 
       .inner {
-        @apply px-5 py-2 rounded-full transition-all duration-300 backdrop-blur-sm relative overflow-hidden z-10;
-        background: linear-gradient(
-          -75deg,
-          rgba(100, 100, 100, 0.1),
-          rgba(150, 150, 150, 0.2),
-          rgba(100, 100, 100, 0.1)
-        );
-        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05),
-          inset 0 -1px 1px rgba(255, 255, 255, 0.2),
-          0 2px 1px -1px rgba(0, 0, 0, 0.5),
-          0 0 1px 2px inset rgba(255, 255, 255, 0.1);
-        position: relative;
-
-        &::after {
-          content: "";
-          position: absolute;
-          z-index: -1;
-          inset: 0;
-          padding: 1px;
-          box-sizing: border-box;
-          border-radius: 9999px;
-          background: conic-gradient(
-              from -75deg at 50% 50%,
-              rgba(255, 255, 255, 0.4),
-              rgba(255, 255, 255, 0) 5% 40%,
-              rgba(255, 255, 255, 0.4) 50%,
-              rgba(255, 255, 255, 0) 60% 95%,
-              rgba(255, 255, 255, 0.4)
-            ),
-            linear-gradient(
-              180deg,
-              rgba(255, 255, 255, 0.3),
-              rgba(255, 255, 255, 0.2)
-            );
-          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-          mask-composite: exclude;
-          transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);
-        }
+        @apply px-5 py-3 rounded-lg bg-white text-black group-hover:bg-black-50 transition-colors duration-300;
 
         span {
-          @apply transition-colors duration-300 relative z-10 font-normal;
-          text-shadow: none;
+          @apply group-hover:text-white transition-colors duration-300;
         }
-
-        &:hover {
-          background: linear-gradient(
-            -60deg,
-            rgba(120, 120, 120, 0.15),
-            rgba(170, 170, 170, 0.25),
-            rgba(120, 120, 120, 0.15)
-          );
-          box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1),
-            inset 0 -1px 1px rgba(255, 255, 255, 0.3),
-            0 1px 1px -1px rgba(0, 0, 0, 0.5),
-            0 0 1px 1px inset rgba(255, 255, 255, 0.2);
-          transform: scale(0.98);
-        }
-
-        &:hover::after {
-          background-position: 25% 50%;
-        }
-      }
-    }
-
-    &.scrolled {
-      .features-btn .inner span {
-        @apply text-black-100;
-      }
-      .contact-btn .inner span {
-        @apply text-black-100;
-      }
-    }
-
-    &.not-scrolled {
-      .features-btn .inner span {
-        @apply text-black-50;
-      }
-      .contact-btn .inner span {
-        @apply text-black-50;
       }
     }
   }
@@ -383,7 +304,7 @@ section {
   }
 
   .card-border {
-    @apply border border-black-50 bg-blue-200;
+    @apply border border-black-50 bg-green-200;
   }
 
   .marquee-item {
@@ -437,11 +358,11 @@ section {
 
     input,
     textarea {
-      @apply w-full px-4 py-4 md:text-base text-sm placeholder:text-black-50 bg-white-50 rounded-md;
+      @apply w-full px-4 py-4 md:text-base text-sm placeholder:text-black-50 bg-green-100 rounded-md;
     }
 
     a {
-      @apply w-full py-4 bg-white-50 text-black font-semibold rounded-md flex justify-center items-center gap-2;
+      @apply w-full py-4 bg-green-500 text-black font-semibold rounded-md flex justify-center items-center gap-2;
 
       img {
         @apply inline-block;
@@ -539,6 +460,114 @@ section {
         background-position: 25% 50%;
       }
     }
+  }
+
+  /* Service Grid and Card Styles */
+
+  .service__grid {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .service__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .service__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .service__card {
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: white;
+  }
+
+  .service__card span {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 10px 20px;
+    font-size: 2.5rem;
+    color: #16a34a; /* green-600 */
+    background-color: #dcfce7; /* green-100 */
+    border-radius: 100%;
+    transition: 0.3s;
+  }
+
+  .service__card span i {
+    font-size: 1.5rem;
+  }
+
+  .service__card h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-black-100);
+  }
+
+  .service__card p {
+    margin-bottom: 1rem;
+    color: var(--color-black-200);
+    line-height: 1.5;
+  }
+
+  .service__card a {
+    color: #16a34a; /* green-600 */
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  .service__card a:hover {
+    color: #15803d; /* green-800 */
+  }
+
+  .service__card:hover span {
+    color: #dcfce7; /* green-100 */
+    background-color: #16a34a; /* green-600 */
+  }
+
+  /* Enhanced service card styles for glass effect */
+  .service__card.custom-glass-container {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.3)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    transition: all 0.4s ease;
+  }
+
+  .service__card.custom-glass-container:hover {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    transform: translateY(-5px);
+  }
+
+  .service__card.custom-glass-container span {
+    background-color: rgba(22, 163, 74, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(22, 163, 74, 0.2);
+    transition: all 0.4s ease;
+  }
+
+  .service__card.custom-glass-container:hover span {
+    background-color: var(--primary-green);
+    color: white;
+    transform: scale(1.05);
   }
 }
 
@@ -689,4 +718,274 @@ section {
 
 .card:hover::before {
   opacity: 1;
+}
+
+/* Custom navbar styles */
+.underline {
+  @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full;
+}
+
+.nav-link-active .underline {
+  @apply w-full;
+}
+
+/* Logo styling */
+.logo {
+  @apply transition-all duration-300;
+}
+
+.logo h1 {
+  font-family: "Mona Sans", sans-serif;
+  line-height: 1.1;
+}
+
+.logo span {
+  letter-spacing: -0.02em;
+  color: var(--primary-green);
+}
+
+.logo div {
+  letter-spacing: -0.01em;
+}
+
+/* Custom glass section for entire hero */
+.custom-glass-section {
+  isolation: isolate;
+  transform: translateZ(0);
+  will-change: transform;
+  position: relative;
+}
+
+.custom-glass-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.custom-glass-section::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: rotate(-45deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Enhanced glass container */
+.custom-glass-container {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  isolation: isolate;
+  transform: translateZ(0);
+  will-change: transform;
+  position: relative;
+}
+
+.custom-glass-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.custom-glass-container::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 40%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: rotate(-45deg);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Fix for Safari and older browsers */
+@supports not (backdrop-filter: blur(12px)) {
+  .custom-glass-container {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Fix for Firefox which doesn't support backdrop-filter well */
+@-moz-document url-prefix() {
+  .custom-glass-container {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Enhance button hover effects */
+.custom-btn {
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.custom-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.custom-btn:hover::before {
+  opacity: 1;
+}
+
+/* Glass particles animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-15px) translateX(10px);
+  }
+  50% {
+    transform: translateY(5px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-5px) translateX(15px);
+  }
+}
+
+.glass-particle {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.glass-particle:hover {
+  transform: scale(1.1);
+  opacity: 0.8 !important;
+}
+
+/* Add radial gradient support */
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
+/* Enhanced counter card styles for glass effect */
+.custom-glass-counter {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+}
+
+.custom-glass-counter:hover {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px) scale(1.02);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.07)
+  );
+}
+
+.counter-number {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+}
+
+/* Enhanced glass particles for counter section */
+.custom-glass-section .glass-particle {
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Hero section curved image styles */
+@keyframes subtle-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.custom-glass-container.rounded-full {
+  animation: subtle-pulse 3s infinite ease-in-out;
+  box-shadow: 0 0 15px rgba(22, 163, 74, 0.3),
+    inset 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive adjustments for hero section */
+@media (max-width: 768px) {
+  .rounded-l-\[300px\] {
+    border-top-left-radius: 150px;
+    border-bottom-left-radius: 150px;
+  }
+}
+
+/* Create dot pattern background */
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, #e5e5e5 1px, transparent 1px);
+  background-size: 20px 20px;
 }

@@ -6,11 +6,11 @@ Source: https://sketchfab.com/3d-models/tuk-tuk-rikshaw-0bdfdf97a0f248008806840f
 Title: Tuk Tuk Rikshaw
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React from "react";
+import { useGLTF } from "@react-three/drei";
 
 export function Model(props) {
-  const { nodes, materials } = useGLTF('/scene.gltf')
+  const { nodes, materials } = useGLTF("/scene.gltf");
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={0.195}>
@@ -22,7 +22,11 @@ export function Model(props) {
               geometry={nodes.Plane001_Body_01_0.geometry}
               material={materials.Body_01}
             />
-            <group position={[0, -1.92, 6.188]} rotation={[-2.959, 0, 0]} scale={2.414}>
+            <group
+              position={[0, -1.92, 6.188]}
+              rotation={[-2.959, 0, 0]}
+              scale={2.414}
+            >
               <mesh
                 castShadow
                 receiveShadow
@@ -36,7 +40,11 @@ export function Model(props) {
                 material={materials.Llanta}
               />
             </group>
-            <group position={[0, -1.92, -5.035]} rotation={[-Math.PI / 2, 0, 0]} scale={2.414}>
+            <group
+              position={[0, -1.92, -5.035]}
+              rotation={[-Math.PI / 2, 0, 0]}
+              scale={2.414}
+            >
               <mesh
                 castShadow
                 receiveShadow
@@ -66,7 +74,7 @@ export function Model(props) {
         </group>
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/scene.gltf')
+useGLTF.preload("/scene.gltf");
